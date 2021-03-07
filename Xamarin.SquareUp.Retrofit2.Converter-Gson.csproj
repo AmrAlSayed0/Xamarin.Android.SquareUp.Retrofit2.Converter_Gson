@@ -1,0 +1,132 @@
+<Project Sdk="MSBuild.Sdk.Extras/3.0.23" >
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <IsBindingProject>true</IsBindingProject>
+        <RootNamespace>Xamarin.SquareUp.Converter_Gson</RootNamespace>
+        <AssemblyName>Xamarin.SquareUp.Converter_Gson</AssemblyName>
+        <Product>$(AssemblyName) ($(TargetFramework))</Product>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+        <Version>1.0.0.0</Version>
+        <NeutralLanguage>en</NeutralLanguage>
+        <FileAlignment>512</FileAlignment>
+        <Deterministic>true</Deterministic>
+        <LangVersion>9.0</LangVersion>
+        <Nullable>enable</Nullable>
+        <_EnableInterfaceMembers>true</_EnableInterfaceMembers>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+        <TargetFrameworks>MonoAndroid11.0</TargetFrameworks>
+        <AndroidUseIntermediateDesignerFile>true</AndroidUseIntermediateDesignerFile>
+        <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+        <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+        <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+        <EnableProguard>true</EnableProguard>
+        <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+        <AndroidUseAapt2>true</AndroidUseAapt2>
+        <AndroidDexTool>d8</AndroidDexTool>
+        <AndroidLinkTool>r8</AndroidLinkTool>
+        <AndroidClassParser>class-parse</AndroidClassParser>
+        <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <DebugType>portable</DebugType>
+        <DefineConstants>$(DefineConstants);TRACE;_BINDING_;</DefineConstants>
+        <EnableDefaultItems>false</EnableDefaultItems>
+        <MavenGroupId>com.squareup.retrofit2</MavenGroupId>
+        <MavenArtifactId>converter-gson</MavenArtifactId>
+        <MavenArtifactVersion>2.9.0</MavenArtifactVersion>
+        <NugetPackageId>Xamarin.Android.SquareUp.Retrofit2.Converter_Gson</NugetPackageId>
+    </PropertyGroup>
+    <PropertyGroup>
+        <PackageId>$(NugetPackageId)</PackageId>
+        <Title>A Xamarin binding for SquareUp's Android library "Converter Gson"</Title>
+        <Summary>A Xamarin binding for SquareUp's Android library "Converter Gson"</Summary>
+        <Description>A Xamarin binding for SquareUp's Android library "Converter Gson"</Description>
+        <Authors>AmrAlSayed0</Authors>
+        <Owners>AmrAlSayed0</Owners>
+        <Copyright>© AmrAlSayed0. All rights reserved.</Copyright>
+        <PackageTags>squareup converter gson code xamarin android monodroid</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/AmrAlSayed0/Xamarin.Android.SquareUp.Retrofit2.Converter_Gson</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/AmrAlSayed0/Xamarin.Android.SquareUp.Retrofit2.Converter_Gson</RepositoryUrl>
+        <PackageVersion>$(MavenArtifactVersion).1</PackageVersion>
+        <RepositoryType>git</RepositoryType>
+        <!-- Include symbol files (*.pdb) in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' " >
+        <DebugSymbols>true</DebugSymbols>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>$(DefineConstants);DEBUG;</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' " >
+        <DebugSymbols>false</DebugSymbols>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>$(DefineConstants);RELEASE;</DefineConstants>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="Mono.Android" />
+        <Reference Include="System" />
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Additions\**\*.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- Includes the -javadoc jar to generate documentation. This property is now deprecated. -->
+        <!--
+        <JavaDocJar Include="Jars\JavaDocJars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)-javadoc.jar"
+                    Condition="Exists('Jars\JavaDocJars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)-javadoc.jar')" />
+        -->
+        <!-- Includes the -sources jar to generate documentation. -->
+        <JavaSourceJar Include="Jars\JavaSourcesJars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)-sources.jar"
+                       Condition="Exists('Jars\JavaSourcesJars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)-sources.jar')" />
+        <!-- Add the jar as the main source of binding, if it exists. This is mainly for libraries distributed as jar files -->
+        <InputJar Include="Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar"
+                  Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar')" />
+        <!-- Add the extracted jars as the main source of binding, if it exists. This is mainly for libraries distributed as aar files -->
+        <!-- The aar files needs to be extracted to a folder named the same name as the maven artifact ID. -->
+        <InputJar Include="Jars\$(MavenArtifactId)\classes.jar"
+                  Condition="Exists('Jars\$(MavenArtifactId)\classes.jar')" />
+        <InputJar Include="Jars\$(MavenArtifactId)\libs\*.jar"
+                  Condition="Exists('Jars\$(MavenArtifactId)\libs\')" />
+        <!-- Packs the jar or aar file into the nuget package. -->
+        <None Include="Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar"
+              Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar')"
+              Pack="True"
+              PackagePath="jar\$(MavenGroupId).$(MavenArtifactId).jar" />
+        <None Include="Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).aar"
+              Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).aar')"
+              Pack="True"
+              PackagePath="aar\$(MavenGroupId).$(MavenArtifactId).aar" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="$(NugetPackageId).targets"
+              Pack="True"
+              PackagePath="build" />
+        <None Include="$(NugetPackageId).targets"
+              Pack="True"
+              PackagePath="buildTransitive" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Jars\$(MavenArtifactId)\proguard.txt"
+              Condition="Exists('Jars\$(MavenArtifactId)\proguard.txt')"
+              Pack="True"
+              PackagePath="proguard\" />
+    </ItemGroup>
+    <ItemGroup>
+        <TransformFile Include="Transforms\*.xml" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- com.google.code.gson » gson » 2.8.5 » 2.8.6 -->
+        <PackageReference Include="Xamarin.Android.Google.Code.Gson"
+                          Version="2.8.6.2" />
+        <!-- com.squareup.retrofit2 » retrofit » 2.9.0 -->
+        <PackageReference Include="Xamarin.Android.SquareUp.Retrofit2"
+                          Version="2.9.0.2" />
+    </ItemGroup>
+</Project>

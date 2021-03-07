@@ -1,0 +1,4 @@
+﻿<metadata>
+    <attr path="/api/package[@name='retrofit2.converter.gson']"
+          name="managedName" >Retrofit2.Converter.Gson</attr>
+</metadata>

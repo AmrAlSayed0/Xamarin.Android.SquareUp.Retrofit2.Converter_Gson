@@ -17,7 +17,7 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-        <TargetFrameworks>MonoAndroid11.0</TargetFrameworks>
+        <TargetFrameworks>MonoAndroid9.0;MonoAndroid10.0;MonoAndroid11.0</TargetFrameworks>
         <AndroidUseIntermediateDesignerFile>true</AndroidUseIntermediateDesignerFile>
         <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -51,7 +51,7 @@
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/AmrAlSayed0/Xamarin.Android.SquareUp.Retrofit2.Converter_Gson</PackageProjectUrl>
         <RepositoryUrl>https://github.com/AmrAlSayed0/Xamarin.Android.SquareUp.Retrofit2.Converter_Gson</RepositoryUrl>
-        <PackageVersion>$(MavenArtifactVersion).1</PackageVersion>
+        <PackageVersion>$(MavenArtifactVersion).2</PackageVersion>
         <RepositoryType>git</RepositoryType>
         <!-- Include symbol files (*.pdb) in the built .nupkg -->
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
@@ -90,10 +90,10 @@
                   Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar')" />
         <!-- Add the extracted jars as the main source of binding, if it exists. This is mainly for libraries distributed as aar files -->
         <!-- The aar files needs to be extracted to a folder named the same name as the maven artifact ID. -->
-        <InputJar Include="Jars\$(MavenArtifactId)\classes.jar"
-                  Condition="Exists('Jars\$(MavenArtifactId)\classes.jar')" />
-        <InputJar Include="Jars\$(MavenArtifactId)\libs\*.jar"
-                  Condition="Exists('Jars\$(MavenArtifactId)\libs\')" />
+        <InputJar Include="Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)\classes.jar"
+                  Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)\classes.jar')" />
+        <InputJar Include="Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)\libs\*.jar"
+                  Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion)\libs\')" />
         <!-- Packs the jar or aar file into the nuget package. -->
         <None Include="Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar"
               Condition="Exists('Jars\$(MavenGroupId).$(MavenArtifactId)-$(MavenArtifactVersion).jar')"
@@ -127,6 +127,6 @@
                           Version="2.8.6.2" />
         <!-- com.squareup.retrofit2 » retrofit » 2.9.0 -->
         <PackageReference Include="Xamarin.Android.SquareUp.Retrofit2"
-                          Version="2.9.0.2" />
+                          Version="2.9.0.3" />
     </ItemGroup>
 </Project>
